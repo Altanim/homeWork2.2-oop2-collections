@@ -4,71 +4,95 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Car ladaGranta = new Car("Lada",
-                "Granta",
-                1.7f,
+        Car lada = new Car("Лада",
+                "Гранта",
+                1.7,
                 "желтый",
-                2017,
+                2015,
                 "Россия",
-                "автомат",
+                "механика",
                 "седан",
-                "a123bn123",
+                "х123хв123",
                 5,
-                true, new Car.Key(), new Car.Insurance(LocalDate.now(),10000, "387645634"));
-        ladaGranta.carInfo();
-        Car audiA8 = new Car("Audi",
-                "A8 50 L TDI quattro",
-                3.0f,
+                true,new Car.Key(),
+                new Car.Insurance(LocalDate.now().minusDays(100),10000,null));
+
+        Car audi = new Car("Audi",
+                "A8 50L TDI quattro",
+                3.0,
                 "черный",
                 2020,
                 "Германия",
-                "автомат",
-                "седан",
-                "c213bn432",
+                "",
+                "",
+                "",
                 6,
-                true,
-                new Car.Key(), new Car.Insurance(LocalDate.now(),15000, "846348754"));
-        audiA8.carInfo();
-        Car bmwZ8 = new Car("BMW",
+                false,new Car.Key(),
+                new Car.Insurance(LocalDate.now().minusDays(38),20000,null));
+
+        Car bmw = new Car("BMW",
                 "Z8",
-                3.0f,
+                3.0,
                 "черный",
                 2021,
                 "Германия",
-                "автомат",
-                "универсал",
-                "v324ko123",
-                6,
-                false,
-                new Car.Key(), new Car.Insurance(LocalDate.now(),20000, "243567435"));
-        bmwZ8.carInfo();
-        Car kiaSportage = new Car("Kia",
+                "",
+                "",
+                "",
+                5,
+                true,
+                new Car.Key(),
+                new Car.Insurance(LocalDate.now().minusDays(200),20000,"634254654"));
+
+        Car kia = new Car("Kia",
                 "Sportage 4",
-                2.4f,
+                2.4,
                 "красный",
                 2018,
                 "Южная Корея",
-                "механика",
-                "седан",
-                "r534kk543",
-                5,
+                null,
+                null,
+                null,
+                0,
                 true,
-                new Car.Key(),new Car.Insurance(LocalDate.now(),30000, "485467453"));
-        kiaSportage.carInfo();
-        Car hyundaiAvante = new Car("Hyundai",
-                "Avante",
-                1.6f,
+                new Car.Key(),
+                new Car.Insurance(null,25000,"253655456"));
+
+        Car hundai = new Car("Hundai",
+                "Avanta",
+                1.6,
                 "оранжевый",
                 2016,
                 "Южная Корея",
                 "автомат",
-                "седан",
-                "e353fd988",
+                "универсал",
+                "к123ор765",
                 5,
-                true,
-                new Car.Key(),new Car.Insurance(LocalDate.now().plusDays(56),15000, "85865478"));
-        hyundaiAvante.carInfo();
-        System.out.println();
-        System.out.println(kiaSportage);
+                false,
+                new Car.Key(),
+                new Car.Insurance(LocalDate.now().minusDays(132), 10000, "183265849"));
+        printInfo(lada);
+        printInfo(audi);
+        printInfo(bmw);
+        printInfo(kia);
+        printInfo(hundai);
     }
+
+    private static void printInfo(Car car) {
+        System.out.println("\n" + car.getBrand() + " " + car.getModel() +
+                ". Объем двигателя: " + car.getEngineVolume() +
+                ". Цвет: " + car.getColor() +
+                ". Год производства: " + car.getYear() +
+                ". Страна производства: " + car.getCountry() +
+                ". \nКоробка передач: " + car.getTransmission() +
+                ". Регистрационный номер: " + car.getRegNum() +
+                ". Количество сидений : " + car.getSeatsCount() +
+                ". Pезина: " + (car.isTires() ? "летняя" : "зимняя")
+                + ". \n" + (car.getKey().isKeylessAccess() ? "Без ключа." : "Ключ.")
+                + (car.getKey().isRemoteRun() ? "Удаленный запуск." : "Обычный запуск.")+
+                " Номер страховки " + car.getInsurance().getNumber() +
+                ". Стоимость страховки " + car.getInsurance().getCost()+
+                ". Срок действия страховки " + car.getInsurance().getExpireDate());
+    }
+
 }
