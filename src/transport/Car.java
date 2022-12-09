@@ -35,6 +35,7 @@ public class Car extends Transport{
                int year,
                String country,
                int maxSpeed,
+               double fuelPercentage,
                String transmission,
                String bodyType,
                String regNum,
@@ -42,7 +43,7 @@ public class Car extends Transport{
                boolean tires,
                Key key,
                Insurance insurance) {
-        super(brand,model,color,year,country,maxSpeed);
+        super(brand,model,color,year,country,maxSpeed,fuelPercentage);
 
         if (engineVolume <= 0) {
             this.engineVolume = 1.5;
@@ -150,7 +151,7 @@ public class Car extends Transport{
         tires = !tires;
     }
 
-    public boolean isCorrectTires() {
+    public boolean isCorrectRegNum() {
         if (regNum.length() != 9) {
             return false;
         }
@@ -164,6 +165,19 @@ public class Car extends Transport{
 
     public Insurance getInsurance() {
         return insurance;
+    }
+
+
+    public void refill() {
+        if (getFuelPercentage() < 100) {
+            System.out.print("\nАвтомобиль заправлен не полностью, необходимо дозалить ");
+            System.out.printf("%.2f", (100.00 - getFuelPercentage()));
+            System.out.print("% бака бензином или дизельным топливом на заправке.");
+            setFuelPercentage(100);
+        } else {
+            System.out.println("\nБак автомобиля полностью запрвлен!");
+
+        }
     }
 
     public static class Key {

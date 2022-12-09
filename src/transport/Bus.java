@@ -10,7 +10,7 @@ public class Bus extends Transport {
     public void printInfo() {
         System.out.println("\nАвтобус ");
         transportInfo();
-        System.out.println("км/ч. \nСтоимость билета: " + getTicketPrice() +
+        System.out.println("\nСтоимость билета: " + getTicketPrice() +
                     "p. Время в пути: " + getTravelTime() +
                     " часов. Станция отбытия: " + getStartStation() +
                     ". Конечная остановка : " + getFinishStation() +
@@ -23,12 +23,13 @@ public class Bus extends Transport {
                int year,
                String country,
                int maxSpeed,
+               double fuelPercentage,
                int ticketPrice,
                double travelTime,
                String startStation,
                String finishStation,
                int amountSeats) {
-        super(brand,model,color,year,country,maxSpeed);
+        super(brand,model,color,year,country,maxSpeed,fuelPercentage);
 
         if (ticketPrice <= 0){
             this.ticketPrice = 100;
@@ -56,11 +57,13 @@ public class Bus extends Transport {
             this.amountSeats = amountSeats;
         }
     }
+    public void setTravelTime(double travelTime) {
+        this.travelTime = travelTime;
+    }
 
     public int getAmountSeats() {
         return amountSeats;
     }
-
     public void setAmountSeats(int amountSeats) {
         this.amountSeats = amountSeats;
     }
@@ -95,5 +98,18 @@ public class Bus extends Transport {
 
     public void setFinishStation(String finishStation) {
         this.finishStation = finishStation;
+    }
+
+    @Override
+    public void refill() {
+        if (getFuelPercentage() < 100) {
+            System.out.print("\nАвтобус заправлен не полностью, необходимо дозалить ");
+            System.out.printf("%.2f", (100.00 - getFuelPercentage()));
+            System.out.print("% бака бензином или дизельным топливом на заправке.");
+            setFuelPercentage(100);
+        } else {
+            System.out.println("\nБак автобуса полностью запрвлен!");
+
+        }
     }
 }

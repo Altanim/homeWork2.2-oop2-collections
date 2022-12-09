@@ -1,22 +1,24 @@
 package transport;
 
-public class Transport {
+public abstract class Transport {
     private final String brand;
     private final String model;
     private  String color;
     private final int year;
     private final String country;
     private int maxSpeed;
+    protected double fuelPercentage;
     public void transportInfo() {
         System.out.print(getBrand() + " " + getModel() +
                 ". Цвет: " + getColor() +
                 ". Год производства: " + getYear() +
                 ". Страна производства: " + getCountry() +
-                ". Максимальная скорость: " + getMaxSpeed());
+                ". Максимальная скорость: " + getMaxSpeed() + "км/ч. " +
+                "Количество топлива в процентах: " + getFuelPercentage() + "%. ");
     }
+    public abstract void refill();
 
-
-    public Transport(String brand, String model, String color, int year, String country, int maxSpeed) {
+    public Transport(String brand, String model, String color, int year, String country, int maxSpeed, double fuelPercentage) {
         if (brand == null || brand.isBlank() || brand.isEmpty()) {
             this.brand = "default";
         } else {
@@ -47,6 +49,21 @@ public class Transport {
         } else {
             this.maxSpeed = maxSpeed;
         }
+        if (fuelPercentage < 0){
+            this.fuelPercentage = 0;
+        } else if (fuelPercentage >100){
+            this.fuelPercentage = 100.00;
+        } else {
+            this.fuelPercentage = fuelPercentage;
+        }
+    }
+
+    public double getFuelPercentage() {
+        return fuelPercentage;
+    }
+
+    public void setFuelPercentage(double fuelPercentage) {
+        this.fuelPercentage = fuelPercentage;
     }
 
     public String getBrand() {

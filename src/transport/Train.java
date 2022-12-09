@@ -10,7 +10,7 @@ public class Train extends Transport {
     public void printInfo() {
         System.out.println("\nПоезд ");
         transportInfo();
-        System.out.print(" км/ч. \nСтоимость билета: " + getTicketPrice() +
+        System.out.print("\nСтоимость билета: " + getTicketPrice() +
                     "p. Время в пути: " + getTravelTime() +
                     " часов. Станция отбытия: " + getStartStation() +
                     ". Конечная остановка : " + getFinishStation() +
@@ -23,12 +23,13 @@ public class Train extends Transport {
                  int year,
                  String country,
                  int maxSpeed,
+                 double fuelPercentage,
                  int ticketPrice,
                  int travelTime,
                  String startStation,
                  String finishStation,
                  int amountWagons) {
-        super(brand,model,color,year,country,maxSpeed);
+        super(brand,model,color,year,country,maxSpeed,fuelPercentage);
         if (ticketPrice <= 0){
             this.ticketPrice = 100;
         } else {
@@ -95,4 +96,18 @@ public class Train extends Transport {
     public void setAmountWagons(int amountWagons) {
         this.amountWagons = amountWagons;
     }
-}
+
+    public void refill() {
+        if (getFuelPercentage() < 100) {
+            System.out.print("\nПоезд заправлен не полностью, необходимо дозалить ");
+            System.out.printf("%.2f", (100.00 - getFuelPercentage()));
+            System.out.print("% бака дизельным топливом.");
+            setFuelPercentage(100);
+        } else {
+            System.out.println("\nПоезд полностью запрвлен!");
+
+        }
+    }
+
+    }
+
