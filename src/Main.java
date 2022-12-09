@@ -13,7 +13,8 @@ public class Main {
                 "желтый",
                 2015,
                 "Россия",
-                "механика",
+                184,
+                "автомат",
                 "седан",
                 "х123хв123",
                 5,
@@ -26,9 +27,10 @@ public class Main {
                 "черный",
                 2020,
                 "Германия",
-                "",
-                "",
-                "",
+                250,
+                "автомат",
+                "седан",
+                null,
                 6,
                 false,new Car.Key(),
                 new Car.Insurance(LocalDate.now().minusDays(38),20000,null));
@@ -39,9 +41,10 @@ public class Main {
                 "черный",
                 2021,
                 "Германия",
-                "",
-                "",
-                "",
+                250,
+                "механика",
+                "седан",
+                null,
                 5,
                 true,
                 new Car.Key(),
@@ -53,10 +56,11 @@ public class Main {
                 "красный",
                 2018,
                 "Южная Корея",
+                180,
+                "автомат",
                 null,
                 null,
-                null,
-                0,
+                5,
                 true,
                 new Car.Key(),
                 new Car.Insurance(null,25000,"253655456"));
@@ -67,6 +71,7 @@ public class Main {
                 "оранжевый",
                 2016,
                 "Южная Корея",
+                200,
                 "автомат",
                 "универсал",
                 "к123ор765",
@@ -148,6 +153,7 @@ public class Main {
                 ". Цвет: " + car.getColor() +
                 ". Год производства: " + car.getYear() +
                 ". Страна производства: " + car.getCountry() +
+                ". Максимальная скорость: " + car.getMaxSpeed() +
                 ". \nКоробка передач: " + car.getTransmission() +
                 ". Регистрационный номер: " + car.getRegNum() +
                 ". Количество сидений : " + car.getSeatsCount() +

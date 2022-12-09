@@ -3,14 +3,8 @@ package transport;
 import java.security.Key;
 import java.time.LocalDate;
 
-public class Car {
-
-    private final String brand;
-    private final String model;
+public class Car extends Transport{
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private String transmission;
     private final String bodyType;
     private String regNum;
@@ -25,6 +19,7 @@ public class Car {
                String color,
                int year,
                String country,
+               int maxSpeed,
                String transmission,
                String bodyType,
                String regNum,
@@ -32,36 +27,14 @@ public class Car {
                boolean tires,
                Key key,
                Insurance insurance) {
-        if (brand == null || brand.isBlank() || brand.isEmpty()) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (model == null || model.isBlank() || model.isEmpty()) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
+        super(brand,model,color,year,country,maxSpeed);
+
         if (engineVolume <= 0) {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
         }
-        if (color == null || color.isBlank() || color.isEmpty()) {
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
-        if (year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
-        }
-        if (country == null || country.isBlank() || country.isEmpty()) {
-            this.country = "default";
-        } else {
-            this.country = country;
-        }
+
         if (transmission == null || transmission.isBlank() || transmission.isEmpty()) {
             this.transmission = "механик";
         } else {
@@ -95,22 +68,7 @@ public class Car {
         }
     }
 
-    public Car(String brand,
-               String model,
-               double engineVolume,
-               String color,
-               int year,
-               String country,
-               String transmission,
-               String regNum,
-               String bodyType,
-               int seatsCount) {
-        this(brand, model, engineVolume, color, year,
-                country, "механика", "x000xx000",
-                "седан", 5, true, new Key(),
-                new Insurance(LocalDate.now().plusDays(365),10000, "abc123456"));
 
-    }
 
     public Key getKey() {
         return key;
@@ -120,13 +78,6 @@ public class Car {
         this.key = key;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
 
     public double getEngineVolume() {
         return engineVolume;
@@ -136,21 +87,7 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
 
     public String getTransmission() {
         return transmission;
@@ -192,12 +129,7 @@ public class Car {
         this.tires = tires;
     }
 
-    @Override
-    public String toString() {
-        return "Автомобиль марки: " + brand + ", модель: " + model +
-                ", объем двигателя: " + engineVolume + " л., цвет: " + color +
-                ", год производства: " + year + ", страна производитель: " + country + ".";
-    }
+
 
     public void changeTires() {
         tires = !tires;
