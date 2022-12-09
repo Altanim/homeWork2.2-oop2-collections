@@ -7,9 +7,14 @@ public class Transport {
     private final int year;
     private final String country;
     private int maxSpeed;
-    public void transportInfo(){
-
+    public void transportInfo() {
+        System.out.print(getBrand() + " " + getModel() +
+                ". Цвет: " + getColor() +
+                ". Год производства: " + getYear() +
+                ". Страна производства: " + getCountry() +
+                ". Максимальная скорость: " + getMaxSpeed());
     }
+
 
     public Transport(String brand, String model, String color, int year, String country, int maxSpeed) {
         if (brand == null || brand.isBlank() || brand.isEmpty()) {

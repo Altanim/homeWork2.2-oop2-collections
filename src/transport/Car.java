@@ -12,6 +12,21 @@ public class Car extends Transport{
     private boolean tires;
     private Key key;
     private final Insurance insurance;
+    public void printInfo() {
+        System.out.println("\nАвтомобиль ");
+        transportInfo();
+        System.out.print(". Объем двигателя: " + getEngineVolume() +
+                ". \nКоробка передач: " + getTransmission() +
+                ". Регистрационный номер: " + getRegNum() +
+                ". Количество сидений : " + getSeatsCount() +
+                ". Pезина: " + (isTires() ? "летняя" : "зимняя")
+                + ". \n" + (getKey().isKeylessAccess() ? "Без ключа." : "Ключ.")
+                + (getKey().isRemoteRun() ? "Удаленный запуск." : "Обычный запуск.")+
+                " Номер страховки " + getInsurance().getNumber() +
+                ". Стоимость страховки " + getInsurance().getCost()+
+                ". Срок действия страховки " + getInsurance().getExpireDate() + "\n");
+    }
+
 
     public Car(String brand,
                String model,

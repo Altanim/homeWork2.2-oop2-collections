@@ -7,6 +7,15 @@ public class Train extends Transport {
     private String finishStation;
     private int amountWagons;
 
+    public void printInfo() {
+        System.out.println("\nПоезд ");
+        transportInfo();
+        System.out.print(" км/ч. \nСтоимость билета: " + getTicketPrice() +
+                    "p. Время в пути: " + getTravelTime() +
+                    " часов. Станция отбытия: " + getStartStation() +
+                    ". Конечная остановка : " + getFinishStation() +
+                    ". \nВагонов в поезде : " + getAmountWagons()+"\n");
+        }
 
     public Train(String brand,
                  String model,

@@ -7,6 +7,16 @@ public class Bus extends Transport {
     private String finishStation;
     private int amountSeats;
 
+    public void printInfo() {
+        System.out.println("\nАвтобус ");
+        transportInfo();
+        System.out.println("км/ч. \nСтоимость билета: " + getTicketPrice() +
+                    "p. Время в пути: " + getTravelTime() +
+                    " часов. Станция отбытия: " + getStartStation() +
+                    ". Конечная остановка : " + getFinishStation() +
+                    ". \nМест в автобусе : " + getAmountSeats() + "\n");
+        }
+
     public Bus(String brand,
                String model,
                String color,

@@ -79,11 +79,6 @@ public class Main {
                 false,
                 new Car.Key(),
                 new Car.Insurance(LocalDate.now().minusDays(132), 10000, "183265849"));
-        printInfo(lada);
-        printInfo(audi);
-        printInfo(bmw);
-        printInfo(kia);
-        printInfo(hundai);
 
         Train lastochka = new Train("Ласточка",
                 "В-901",
@@ -107,8 +102,6 @@ public class Main {
                 "Ленинградский вокзал",
                 "Ленинград - Пассажирский",
                 8);
-        printInfo(lastochka);
-        printInfo(leningrad);
 
         Bus paz1 = new Bus("Паз",
                 "320405 - 04",
@@ -143,50 +136,10 @@ public class Main {
                 "Сочи, центральный автовокзал",
                 "Анапа автовокзал",
                 44);
-        printInfo(paz1);
-        printInfo(liaz);
-        printInfo(kav);
-    }
-    private static void printInfo(Car car) {
-        System.out.println("\nАвтомобиль " + car.getBrand() + " " + car.getModel() +
-                ". Объем двигателя: " + car.getEngineVolume() +
-                ". Цвет: " + car.getColor() +
-                ". Год производства: " + car.getYear() +
-                ". Страна производства: " + car.getCountry() +
-                ". Максимальная скорость: " + car.getMaxSpeed() +
-                ". \nКоробка передач: " + car.getTransmission() +
-                ". Регистрационный номер: " + car.getRegNum() +
-                ". Количество сидений : " + car.getSeatsCount() +
-                ". Pезина: " + (car.isTires() ? "летняя" : "зимняя")
-                + ". \n" + (car.getKey().isKeylessAccess() ? "Без ключа." : "Ключ.")
-                + (car.getKey().isRemoteRun() ? "Удаленный запуск." : "Обычный запуск.")+
-                " Номер страховки " + car.getInsurance().getNumber() +
-                ". Стоимость страховки " + car.getInsurance().getCost()+
-                ". Срок действия страховки " + car.getInsurance().getExpireDate());
-    }
-    private static void printInfo(Train train) {
-        System.out.println("\nПоезд " + train.getBrand() + " " + train.getModel() +
-                ". Цвет: " + train.getColor() +
-                ". Год производства: " + train.getYear() +
-                ". Страна производства: " + train.getCountry() +
-                ". Максимальная скорость: " + train.getMaxSpeed() +
-                "км/ч. \nСтоимость билета: " + train.getTicketPrice() +
-                "p. Время в пути: " + train.getTravelTime() +
-                " часов. Станция отбытия: " + train.getStartStation() +
-                ". Конечная остановка : " + train.getFinishStation() +
-                ". \nВагонов в поезде : " + train.getAmountWagons());
-    }
-    private static void printInfo(Bus bus) {
-        System.out.println("\nАвтобус " + bus.getBrand() + " " + bus.getModel() +
-                ". Цвет: " + bus.getColor() +
-                ". Год производства: " + bus.getYear() +
-                ". Страна производства: " + bus.getCountry() +
-                ". Максимальная скорость: " + bus.getMaxSpeed() +
-                "км/ч. \nСтоимость билета: " + bus.getTicketPrice() +
-                "p. Время в пути: " + bus.getTravelTime() +
-                " часов. Станция отбытия: " + bus.getStartStation() +
-                ". Конечная остановка : " + bus.getFinishStation() +
-                ". \nМест в автобусе : " + bus.getAmountSeats());
+        lada.printInfo();
+        leningrad.printInfo();
+        liaz.printInfo();
+
     }
     }
 
