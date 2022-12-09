@@ -1,25 +1,25 @@
 package transport;
 
-public class Train extends Transport {
+public class Bus extends Transport {
     private int ticketPrice;
-    private int travelTime;
+    private double travelTime;
     private String startStation;
     private String finishStation;
-    private int amountWagons;
+    private int amountSeats;
 
-
-    public Train(String brand,
-                 String model,
-                 String color,
-                 int year,
-                 String country,
-                 int maxSpeed,
-                 int ticketPrice,
-                 int travelTime,
-                 String startStation,
-                 String finishStation,
-                 int amountWagons) {
+    public Bus(String brand,
+               String model,
+               String color,
+               int year,
+               String country,
+               int maxSpeed,
+               int ticketPrice,
+               double travelTime,
+               String startStation,
+               String finishStation,
+               int amountSeats) {
         super(brand,model,color,year,country,maxSpeed);
+
         if (ticketPrice <= 0){
             this.ticketPrice = 100;
         } else {
@@ -40,11 +40,19 @@ public class Train extends Transport {
         } else{
             this.finishStation = finishStation;
         }
-        if (amountWagons <= 0){
-            this.amountWagons = 1;
+        if (amountSeats <= 0){
+            this.amountSeats = 50;
         } else {
-            this.amountWagons = amountWagons;
+            this.amountSeats = amountSeats;
         }
+    }
+
+    public int getAmountSeats() {
+        return amountSeats;
+    }
+
+    public void setAmountSeats(int amountSeats) {
+        this.amountSeats = amountSeats;
     }
 
     public int getTicketPrice() {
@@ -55,7 +63,7 @@ public class Train extends Transport {
         this.ticketPrice = ticketPrice;
     }
 
-    public int getTravelTime() {
+    public double getTravelTime() {
         return travelTime;
     }
 
@@ -77,13 +85,5 @@ public class Train extends Transport {
 
     public void setFinishStation(String finishStation) {
         this.finishStation = finishStation;
-    }
-
-    public int getAmountWagons() {
-        return amountWagons;
-    }
-
-    public void setAmountWagons(int amountWagons) {
-        this.amountWagons = amountWagons;
     }
 }
