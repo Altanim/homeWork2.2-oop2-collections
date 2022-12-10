@@ -167,8 +167,8 @@ public class Car extends Transport{
         return insurance;
     }
 
-
-    public void refill() {
+  @Override
+  public void refill() {
         if (getFuelPercentage() < 100) {
             System.out.print("\nАвтомобиль заправлен не полностью, необходимо дозалить ");
             System.out.printf("%.2f", (100.00 - getFuelPercentage()));

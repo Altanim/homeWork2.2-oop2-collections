@@ -151,6 +151,8 @@ public class Main {
         liaz.printInfo();
        leningrad.refill();
        leningrad.refill();
+       bmw.refill();
+       bmw.refill();
 
     }
     }

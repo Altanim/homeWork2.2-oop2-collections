@@ -96,7 +96,7 @@ public class Train extends Transport {
     public void setAmountWagons(int amountWagons) {
         this.amountWagons = amountWagons;
     }
-
+    @Override
     public void refill() {
         if (getFuelPercentage() < 100) {
             System.out.print("\nПоезд заправлен не полностью, необходимо дозалить ");
