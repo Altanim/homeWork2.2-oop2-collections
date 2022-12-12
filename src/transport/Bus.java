@@ -1,7 +1,42 @@
 package transport;
 
-public class Bus extends Transport {
-    private int ticketPrice;
+public class Bus extends Transport implements Competing {
+    public Bus(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+    }
+
+    @Override
+    public void start() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " стартовал!" );
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " остановился." +
+                "\nВремя: " + bestLapTime() + "мин. Скорость: " +maximumSpeed()+ "км/ч.");
+    }
+
+//    @Override
+//    public void refill() {
+//
+//    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Пит-стоп пройден!");
+    }
+
+    @Override
+    public double bestLapTime() {
+
+        return (double) (100/(maximumSpeed()/10));
+    }
+
+    @Override
+    public int maximumSpeed() {
+        return (int) ( Math.random() * (110-90) ) + 90;
+    }
+   /* private int ticketPrice;
     private double travelTime;
     private String startStation;
     private String finishStation;
@@ -15,9 +50,9 @@ public class Bus extends Transport {
                     " часов. Станция отбытия: " + getStartStation() +
                     ". Конечная остановка : " + getFinishStation() +
                     ". \nМест в автобусе : " + getAmountSeats() + "\n");
-        }
+        }*/
 
-    public Bus(String brand,
+    /*public Bus(String brand,
                String model,
                String color,
                int year,
@@ -98,18 +133,18 @@ public class Bus extends Transport {
 
     public void setFinishStation(String finishStation) {
         this.finishStation = finishStation;
-    }
+    }*/
 
     @Override
     public void refill() {
-        if (getFuelPercentage() < 100) {
+        /*if (getFuelPercentage() < 100) {
             System.out.print("\nАвтобус заправлен не полностью, необходимо дозалить ");
             System.out.printf("%.2f", (100.00 - getFuelPercentage()));
             System.out.print("% бака бензином или дизельным топливом на заправке.");
             setFuelPercentage(100);
-        } else {
-            System.out.println("\nБак автобуса полностью запрвлен!");
+        } else {*/
+            System.out.println("Бак автобуса полностью запрвлен!");
 
         }
     }
-}
+

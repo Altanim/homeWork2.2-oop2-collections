@@ -1,18 +1,16 @@
 package transport;
 
-import java.security.Key;
-import java.time.LocalDate;
-
-public class Car extends Transport{
-    private double engineVolume;
+public class Car extends Transport implements Competing{
+/*private double engineVolume;
     private String transmission;
     private final String bodyType;
     private String regNum;
     private final int seatsCount;
     private boolean tires;
+
     private Key key;
-    private final Insurance insurance;
-    public void printInfo() {
+    private final Insurance insurance;*/
+   /* public void printInfo() {
         System.out.println("\nАвтомобиль ");
         transportInfo();
         System.out.print(". Объем двигателя: " + getEngineVolume() +
@@ -25,13 +23,39 @@ public class Car extends Transport{
                 " Номер страховки " + getInsurance().getNumber() +
                 ". Стоимость страховки " + getInsurance().getCost()+
                 ". Срок действия страховки " + getInsurance().getExpireDate() + "\n");
+    }*/
+
+
+  /*  @Override
+    public void refill() {
+
+    }*/
+
+    @Override
+    public void start() {
+        System.out.println("Автомобиль " + getBrand() + " " + getModel() + " стартовал!" );
     }
 
+    @Override
+    public void stop() {
+        System.out.println("Автомобиль " + getBrand() + " " + getModel() + " остановился. " +
+                "\nВремя: " + bestLapTime() + "мин. Скорость: " +maximumSpeed()+ "км/ч.");
+    }
+
+    @Override
+    public void refill() {
+        System.out.println("Бак автомобиля полностью запрвлен!");
+    }
+
+//    @Override
+//    public void refill() {
+//
+//    }
 
     public Car(String brand,
                String model,
-               double engineVolume,
-               String color,
+               double engineVolume
+               /*String color,
                int year,
                String country,
                int maxSpeed,
@@ -42,10 +66,10 @@ public class Car extends Transport{
                int seatsCount,
                boolean tires,
                Key key,
-               Insurance insurance) {
-        super(brand,model,color,year,country,maxSpeed,fuelPercentage);
+               Insurance insurance*/) {
+        super(brand,model,engineVolume);
 
-        if (engineVolume <= 0) {
+       /* if (engineVolume <= 0) {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
@@ -81,12 +105,28 @@ public class Car extends Transport{
             this.insurance = new Insurance(LocalDate.now().plusDays(365), 10000, "abc12345");
         } else {
             this.insurance = insurance;
-        }
+        }*/
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Пит-стоп пройден!");
+    }
+
+    @Override
+    public double bestLapTime() {
+        return (double) (100/(maximumSpeed()/10));
+    }
+
+    @Override
+    public int maximumSpeed() {
+        return (int) ( Math.random() * (200-150) ) + 150;
     }
 
 
 
-    public Key getKey() {
+
+    /*public Key getKey() {
         return key;
     }
 
@@ -244,5 +284,5 @@ public class Car extends Transport{
             }
 }
     }
-
+*/
 }

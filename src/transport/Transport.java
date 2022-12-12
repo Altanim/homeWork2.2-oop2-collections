@@ -1,35 +1,55 @@
 package transport;
 
 public abstract class Transport {
+    private double engineVolume;
     private final String brand;
     private final String model;
-    private  String color;
+    /*private  String color;
     private final int year;
     private final String country;
     private int maxSpeed;
-    protected double fuelPercentage;
+    protected double fuelPercentage;*/
+    public abstract void start();
+    public abstract void stop();
     public void transportInfo() {
-        System.out.print(getBrand() + " " + getModel() +
-                ". Цвет: " + getColor() +
-                ". Год производства: " + getYear() +
-                ". Страна производства: " + getCountry() +
+        System.out.print("\n" + getBrand() + " " + getModel() +
+              /*  ". Цвет: " + getColor() +
+                ". Год производства: " + getYear() +*/
+                ". Объем двигателя: " + engineVolume +
+                ".");
+                /*". Страна производства: " + getCountry() +
                 ". Максимальная скорость: " + getMaxSpeed() + "км/ч. " +
-                "Количество топлива в процентах: " + getFuelPercentage() + "%. ");
+                "Количество топлива в процентах: " + getFuelPercentage() + "%. ");*/
     }
+
+    public String notNull(String s){
+        if (s == null || s.isBlank() || s.isEmpty() ){
+            s = "default";
+        } else {
+            s = s;
+        }
+        return s;
+    }
+public double notNull(double d){
+    if (d <= 0) {
+        d = 1.5;
+    } else {
+        d = d;
+    }
+    return d;
+}
     public abstract void refill();
 
-    public Transport(String brand, String model, String color, int year, String country, int maxSpeed, double fuelPercentage) {
-        if (brand == null || brand.isBlank() || brand.isEmpty()) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (model == null || model.isBlank() || model.isEmpty()) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-        if (color == null || color.isBlank() || color.isEmpty()) {
+    public Transport(String brand, String model) {
+        this("default","default",1.5);
+    }
+
+    public Transport(String brand, String model, double engineVolume) {
+        this.brand = notNull(brand);
+        this.model = notNull(model);
+        this.engineVolume = notNull(engineVolume);
+
+        /*if (color == null || color.isBlank() || color.isEmpty()) {
             this.color = "белый";
         } else {
             this.color = color;
@@ -55,15 +75,23 @@ public abstract class Transport {
             this.fuelPercentage = 100.00;
         } else {
             this.fuelPercentage = fuelPercentage;
-        }
+        }*/
     }
 
-    public double getFuelPercentage() {
-        return fuelPercentage;
+//    public double getFuelPercentage() {
+//        return fuelPercentage;
+//    }
+//
+//    public void setFuelPercentage(double fuelPercentage) {
+//        this.fuelPercentage = fuelPercentage;
+//    }
+
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public void setFuelPercentage(double fuelPercentage) {
-        this.fuelPercentage = fuelPercentage;
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
     }
 
     public String getBrand() {
@@ -74,7 +102,7 @@ public abstract class Transport {
         return model;
     }
 
-    public String getColor() {
+    /*public String getColor() {
         return color;
     }
 
@@ -96,5 +124,5 @@ public abstract class Transport {
 
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = maxSpeed;
-    }
+    }*/
 }

@@ -1,7 +1,12 @@
 import transport.Bus;
 import transport.Car;
-import transport.Train;
+//import transport.Train;
 import transport.Transport;
+import transport.Truck;
+import transport.driver.Driver;
+import transport.driver.DriverB;
+import transport.driver.DriverC;
+import transport.driver.DriverD;
 
 import java.time.LocalDate;
 
@@ -9,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
         Car lada = new Car("Лада",
                 "Гранта",
-                1.7,
-                "желтый",
+                1.7
+               /* "желтый",
                 2015,
                 "Россия",
                 184,
@@ -20,11 +25,11 @@ public class Main {
                 "х123хв123",
                 5,
                 true,new Car.Key(),
-                new Car.Insurance(LocalDate.now().minusDays(100),10000,null));
+                new Car.Insurance(LocalDate.now().minusDays(100),10000,null)*/);
 
         Car audi = new Car("Audi",
                 "A8 50L TDI quattro",
-                3.0,
+                3.0/*,
                 "черный",
                 2020,
                 "Германия",
@@ -35,11 +40,11 @@ public class Main {
                 null,
                 6,
                 false,new Car.Key(),
-                new Car.Insurance(LocalDate.now().minusDays(38),20000,null));
+                new Car.Insurance(LocalDate.now().minusDays(38),20000,null)*/);
 
         Car bmw = new Car("BMW",
                 "Z8",
-                3.0,
+                3.0/*,
                 "черный",
                 2021,
                 "Германия",
@@ -51,11 +56,11 @@ public class Main {
                 5,
                 true,
                 new Car.Key(),
-                new Car.Insurance(LocalDate.now().minusDays(200),20000,"634254654"));
+                new Car.Insurance(LocalDate.now().minusDays(200),20000,"634254654")*/);
 
         Car kia = new Car("Kia",
                 "Sportage 4",
-                2.4,
+                2.4/*,
                 "красный",
                 2018,
                 "Южная Корея",
@@ -67,9 +72,9 @@ public class Main {
                 5,
                 true,
                 new Car.Key(),
-                new Car.Insurance(null,25000,"253655456"));
+                new Car.Insurance(null,25000,"253655456")*/);
 
-        Car hundai = new Car("Hundai",
+        /*Car hundai = new Car("Hundai",
                 "Avanta",
                 1.6,
                 "оранжевый",
@@ -108,12 +113,12 @@ public class Main {
                 0,
                 "Ленинградский вокзал",
                 "Ленинград - Пассажирский",
-                8);
+                8);*/
 
         Bus paz1 = new Bus("Паз",
                 "320405 - 04",
-                null,
-                2015,
+                4.43
+                /*2015,
                 "Россия",
                 120,
                 56.85,
@@ -121,11 +126,11 @@ public class Main {
                 9.40,
                 "Ленинградский автовокзал",
                 "Московский автовокзал",
-                41);
+                41*/);
         Bus liaz = new Bus("ЛиАЗ",
                 "525662",
-                null,
-                2016,
+                10.85
+                /*2016,
                 "Россия",
                 120,
                 56,
@@ -133,11 +138,11 @@ public class Main {
                 6.22,
                 "Автовокзал Красноярск",
                 "Абакан ж/д вокзал",
-                66);
+                66*/);
         Bus kav = new Bus("КАВЗ",
                 "4238",
-                null,
-                2014,
+                6.7
+                /*2014,
                 "Россия",
                 130,
                 85.95,
@@ -145,15 +150,23 @@ public class Main {
                 9.10,
                 "Сочи, центральный автовокзал",
                 "Анапа автовокзал",
-                44);
-        lada.printInfo();
-        leningrad.printInfo();
-        liaz.printInfo();
-       leningrad.refill();
-       leningrad.refill();
-       bmw.refill();
-       bmw.refill();
+                44*/);
+        Bus paz = new Bus("ПаЗ", "44-65", 5.3);
+        Truck mercedes = new Truck("Mercedes", "Actros S", 15.6);
+        Truck volvo = new Truck("Volvo", "VH", 13);
+        Truck kamaz = new Truck("Камаз", "65116", 11.76);
+        Truck hundai = new Truck("Hundai", "ST5", 13);
+
+        DriverB sergey = new DriverB("Иванов Иван Михайлович", true, 10);
+        DriverC dmitry = new DriverC("Сергеев Дмитрий Андреевич", true, 7);
+        DriverD petr = new DriverD("Петров Петр Космодемьянович", true, 15);
+
+
+        sergey.race(kia);
+        dmitry.race(mercedes);
+        petr.race(paz);
+    }
 
     }
-    }
+
 
