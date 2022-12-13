@@ -4,24 +4,14 @@ public abstract class Transport {
     private double engineVolume;
     private final String brand;
     private final String model;
-    /*private  String color;
-    private final int year;
-    private final String country;
-    private int maxSpeed;
-    protected double fuelPercentage;*/
     public abstract void start();
     public abstract void stop();
     public void transportInfo() {
         System.out.print("\n" + getBrand() + " " + getModel() +
-              /*  ". Цвет: " + getColor() +
-                ". Год производства: " + getYear() +*/
                 ". Объем двигателя: " + engineVolume +
                 ".");
-                /*". Страна производства: " + getCountry() +
-                ". Максимальная скорость: " + getMaxSpeed() + "км/ч. " +
-                "Количество топлива в процентах: " + getFuelPercentage() + "%. ");*/
     }
-
+    public abstract void printType();
     public String notNull(String s){
         if (s == null || s.isBlank() || s.isEmpty() ){
             s = "default";
@@ -40,7 +30,7 @@ public double notNull(double d){
 }
     public abstract void refill();
 
-    public Transport(String brand, String model) {
+    public Transport(String brand, String model, String color, int year, String country, int maxSpeed, double fuelPercentage) {
         this("default","default",1.5);
     }
 

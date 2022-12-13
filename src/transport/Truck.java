@@ -1,7 +1,20 @@
 package transport;
 
 public class Truck extends Transport implements Competing {
-    public static final String[] PIT_STOPS = new String[] {"Остановка №1","Остановка №2","Остановка №3"};
+
+    private TruckWeight truckWeight;
+    public Truck(String brand, String model, double engineVolume, TruckWeight truckWeight) {
+        super(brand, model, engineVolume);
+        this.truckWeight = truckWeight;
+    }
+
+    public TruckWeight getTruckWeight() {
+        return truckWeight;
+    }
+
+    public void setTruckWeight(TruckWeight truckWeight) {
+        this.truckWeight = truckWeight;
+    }
 
     @Override
     public void start() {
@@ -15,19 +28,18 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
+    public void printType() {
+        if(truckWeight == null){
+            System.out.println("Данных по авто недостаточно.");
+        } else {
+            System.out.println("Грузоподъемность от "+truckWeight.getFrom()+"т. до " +truckWeight.getTo()+"т.");
+        }
+    }
+
+    @Override
     public void refill() {
         System.out.println("Бак грузовика полностью запрвлен!");
     }
-//
-//    @Override
-//    public void refill() {
-//
-//    }
-
-    public Truck(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
-    }
-
 
     @Override
     public void pitStop() {
