@@ -4,8 +4,8 @@ import transport.Bus;
 import transport.Car;
 
 public class DriverD extends Driver<Bus> {
-    public DriverD(String name, boolean driverLicense, int exp) {
-        super(name, driverLicense, exp);
+    public DriverD(String name, boolean driverLicense, int exp, char category) {
+        super(name, driverLicense, exp, category);
     }
     public void race(Bus transport){
         driverInfo(transport);

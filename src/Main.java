@@ -23,20 +23,29 @@ public class Main {
         Truck kamaz = new Truck("Камаз", "65116", 11.76, TruckWeight.N2);
         Truck hundaiTruck = new Truck("Hundai", "ST5", 13, TruckWeight.N3);
 
-        DriverB sergey = new DriverB("Иванов Иван Михайлович", true, 10);
-        DriverC dmitry = new DriverC("Сергеев Дмитрий Андреевич", true, 7);
-        DriverD petr = new DriverD("Петров Петр Космодемьянович", true, 15);
-
-
-        sergey.race(kia);
-        dmitry.race(mercedes);
-        petr.race(paz);
-
-        kia.printType();
-        paz.printType();
-        hundaiTruck.printType();
+        DriverB sergey = new DriverB("Иванов Иван Михайлович", true, 10,'B');
+        DriverC dmitry = new DriverC("Сергеев Дмитрий Андреевич", true, 7, 'C');
+        DriverD petr = new DriverD("Петров Петр Космодемьянович", true, 15, 'd');
+        service(lada,audi,bmw,kamaz,kav,kia,hundaiTruck,hundai,paz,paz1,liaz,volvo);
     }
-
+    private static void serviceTransport(Transport transport){
+        try {
+            if(!transport.service()){
+                throw new RuntimeException("Транспортное средство "+transport.getBrand()+" "+transport.getModel()+
+                        " не прошло диагностику");
+            } else {
+                System.out.println("Транспортное средство "+transport.getBrand()+" "+transport.getModel()+
+                        " прошло диагностику");
+            }
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
+    }
+private static void service(Transport...transports){
+        for (Transport transport : transports){
+            serviceTransport(transport);
+        }
+}
     }
 
 

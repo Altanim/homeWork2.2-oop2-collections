@@ -27,6 +27,12 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
+    public boolean service() {
+        System.out.println("Автобус "+getBrand()+" "+getModel()+" в диагностике не нуждается.");
+        return true;
+    }
+
+    @Override
     public void printType() {
         if(busCapacity == null){
             System.out.println("Данных по авто недостаточно.");
