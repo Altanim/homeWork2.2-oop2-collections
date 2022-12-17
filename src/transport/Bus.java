@@ -26,7 +26,7 @@ public class Bus extends Transport implements Competing {
                 "\nВремя: " + bestLapTime() + "мин. Скорость: " +maximumSpeed()+ "км/ч.");
     }
 
-    @Override
+
     public boolean service() {
         System.out.println("Автобус "+getBrand()+" "+getModel()+" в диагностике не нуждается.");
         return true;
@@ -62,5 +62,10 @@ public class Bus extends Transport implements Competing {
             System.out.println("Бак автобуса полностью запрвлен!");
 
         }
+
+    @Override
+    public void repair() {
+        System.out.println("Автобус " + getBrand() + " " + getModel()+ " отремонтирован.");
     }
+}
 

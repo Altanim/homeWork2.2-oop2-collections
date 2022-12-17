@@ -1,5 +1,12 @@
 package transport;
 
+import transport.driver.Driver;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class Transport {
     private double engineVolume;
     private final String brand;
@@ -7,6 +14,9 @@ public abstract class Transport {
     public abstract void start();
     public abstract void stop();
     public abstract boolean service();
+    private List<Driver<?>> drivers = new ArrayList<>();
+    private List<Mechanic<?>> mechanics = new ArrayList<>();
+    private List<Sponsor> sponsors = new ArrayList<>();
     public void transportInfo() {
         System.out.print("\n" + getBrand() + " " + getModel() +
                 ". Объем двигателя: " + engineVolume +
@@ -39,8 +49,17 @@ public double notNull(double d){
         this.brand = notNull(brand);
         this.model = notNull(model);
         this.engineVolume = notNull(engineVolume);
-    }
 
+    }
+    public void addDriver(Driver<?>... drivers){
+        this.drivers.addAll(Arrays.asList(drivers));
+    }
+    public void addMechanic(Mechanic<?>... mechanics){
+       this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+    public void addSponsor(Sponsor... sponsors){
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
 
     public double getEngineVolume() {
         return engineVolume;
@@ -58,4 +77,17 @@ public double notNull(double d){
         return model;
     }
 
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    public abstract void repair();
 }

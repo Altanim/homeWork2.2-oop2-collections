@@ -24,6 +24,12 @@ public abstract class Driver<T extends Transport>{
         this.category = setCategory(category);
     }
 
+    @Override
+    public String toString() {
+        return  name + ", стаж: " + exp +
+                " лет, категория прав: " + category + ".";
+    }
+
     public char getCategory() {
         return category;
     }
