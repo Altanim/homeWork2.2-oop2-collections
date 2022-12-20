@@ -8,20 +8,20 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
-    private static final List<String> NAMES = List.of(
-            "Екатерина Петрова",
-            "Николай Андреев",
-            "Наталья Назарова",
-            "Семен Сухих",
-            "Марина Сергеева",
-            "Ольга Антоненко",
-            "Петр Смирнов",
-            "Владимир Муленко",
-            "Анастасия Рыбина",
-            "Никита Маланов"
-    );
-    private static Random RANDOM = new Random();
-    private static final int SIZE = 5;
+//    private static final List<String> NAMES = List.of(
+//            "Екатерина Петрова",
+//            "Николай Андреев",
+//            "Наталья Назарова",
+//            "Семен Сухих",
+//            "Марина Сергеева",
+//            "Ольга Антоненко",
+//            "Петр Смирнов",
+//            "Владимир Муленко",
+//            "Анастасия Рыбина",
+//            "Никита Маланов"
+//    );
+//    private static Random RANDOM = new Random();
+//    private static final int SIZE = 5;
     public static void main(String[] args) {
         ServiceStation serviceStation = new ServiceStation();
         DriverB sergeyDriver = new DriverB("Иванов Сергей Михайлович", true, 10,'B');
@@ -79,92 +79,84 @@ public class Main {
         volvo.addSponsor(bMotors);
         volvo.addDriver(aleksandrDriver);
         volvo.addMechanic(denisMech);
+        volvo.addMechanic(denisMech);
 
         Truck kamaz = new Truck("Камаз", "65116", 11.76, TruckWeight.N2);
         Truck hundaiTruck = new Truck("Hundai", "ST5", 13, TruckWeight.N3);
-        List<Transport> transports = List.of(lada,audi,bmw,kia,hundai,paz,paz1,liaz,kav,mercedes,volvo,kamaz,hundaiTruck);
+        printInfo(volvo);
+        volvo.transportInfo();
+        printInfo(liaz);
+        liaz.transportInfo();
+        printInfo(lada);
+        lada.transportInfo();
+        Set<Transport> transports = Set.of(lada,kamaz);
+        System.out.println(transports);
 
-        serviceStation.serviceCar(lada);
-        System.out.println();
-        printInfo(mercedes);
-        denisDriver.race(kia);
-
-        serviceStation.addCar(bmw);
-        serviceStation.addCar(lada);
-        serviceStation.addCar(audi);
-        serviceStation.addTruck(volvo);
-        serviceStation.addTruck(kamaz);
-        serviceStation.service();
-        serviceStation.service();
-        serviceStation.service();
-        serviceStation.service();
-        serviceStation.service();
-
-
-        // Задание 2
-        Queue<String> queue1 = new ArrayDeque<>();
-        Queue<String> queue2 = new ArrayDeque<>();
-        randomFill(queue1);
-        randomFill(queue2);
-        System.out.println("Очередь 1: " + queue1);
-        System.out.println("Очередь 2: " + queue2);
-        add("Иван Иванов", queue1,queue2);
-        System.out.println("Очередь 1: " + queue1);
-        System.out.println("Очередь 2: " + queue2);
-        remove(queue1,queue2);
-        System.out.println("Очередь 1: " + queue1);
-        System.out.println("Очередь 2: " + queue2);
-        // Задание 3
-        example();
+//
+//        // Задание 2
+//        Queue<String> queue1 = new ArrayDeque<>();
+//        Queue<String> queue2 = new ArrayDeque<>();
+//        randomFill(queue1);
+//        randomFill(queue2);
+//        System.out.println("Очередь 1: " + queue1);
+//        System.out.println("Очередь 2: " + queue2);
+//        add("Иван Иванов", queue1,queue2);
+//        System.out.println("Очередь 1: " + queue1);
+//        System.out.println("Очередь 2: " + queue2);
+//        remove(queue1,queue2);
+//        System.out.println("Очередь 1: " + queue1);
+//        System.out.println("Очередь 2: " + queue2);
+//        // Задание 3
+//        example();
 
     }
     private static void printInfo(Transport transport){
-        System.out.println(transport.getBrand() +" "+ transport.getModel());
+        System.out.println("\n" + transport.getBrand() +" "+ transport.getModel());
         System.out.println("Водитель: " + transport.getDrivers());
         System.out.println("Механик: " + transport.getMechanics());
         System.out.println("Спонсоры: " + transport.getSponsors());
     }
-    private static void example() {
-        List<List<String>> biDemArrList = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            biDemArrList.add(i, new ArrayList<>());
-            for (int j = 0; j < 8; j++) {
-                biDemArrList.get(i).add(j, ((i + j)%2==1?"●":"◯"));
-            }
-        }
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                System.out.print(biDemArrList.get(i).get(j) + " ");
-            }
-            System.out.println();
-        }
-    }
-    private static void add(String name, Queue<String> queue1, Queue<String> queue2){
-        if(queue1.size() >= SIZE && queue2.size() >= SIZE){
-            System.out.println("Позвать Галю");
-            return;
-        }
-        if (queue1.size()< queue2.size() && queue1.size() != SIZE){
-            queue1.offer(name);
-        } else {
-            queue2.offer(name);
-        }
-    }
-    private static void remove(Queue<String> queue1, Queue<String> queue2){
-        if (RANDOM.nextBoolean()){
-            queue1.poll();
-        }else {
-            queue2.poll();
-        }
-    }
-    private static void randomFill(Queue<String> queue){
-        int size  = RANDOM.nextInt(SIZE + 1);
-        for (int i = 0; i < size; i++) {
-            queue.offer(NAMES.get(RANDOM.nextInt(NAMES.size())));
-
-        }
-
-    }
+//    private static void example() {
+//        List<List<String>> biDemArrList = new ArrayList<>();
+//        for (int i = 0; i < 8; i++) {
+//            biDemArrList.add(i, new ArrayList<>());
+//            for (int j = 0; j < 8; j++) {
+//                biDemArrList.get(i).add(j, ((i + j)%2==1?"●":"◯"));
+//            }
+//        }
+//        for (int i = 0; i < 8; i++) {
+//            for (int j = 0; j < 8; j++) {
+//                System.out.print(biDemArrList.get(i).get(j) + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
+//    private static void add(String name, Queue<String> queue1, Queue<String> queue2){
+//        if(queue1.size() >= SIZE && queue2.size() >= SIZE){
+//            System.out.println("Позвать Галю");
+//            return;
+//        }
+//        if (queue1.size()< queue2.size() && queue1.size() != SIZE){
+//            queue1.offer(name);
+//        } else {
+//            queue2.offer(name);
+//        }
+//    }
+//    private static void remove(Queue<String> queue1, Queue<String> queue2){
+//        if (RANDOM.nextBoolean()){
+//            queue1.poll();
+//        }else {
+//            queue2.poll();
+//        }
+//    }
+//    private static void randomFill(Queue<String> queue){
+//        int size  = RANDOM.nextInt(SIZE + 1);
+//        for (int i = 0; i < size; i++) {
+//            queue.offer(NAMES.get(RANDOM.nextInt(NAMES.size())));
+//
+//        }
+//
+//    }
 }
 
 

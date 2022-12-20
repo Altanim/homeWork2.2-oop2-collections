@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport implements Competing{
 
     private BodyType bodyType;
@@ -10,7 +12,11 @@ public class Car extends Transport implements Competing{
         super(brand,model,engineVolume);
         this.bodyType = bodyType;
     }
-
+    public void transportInfo() {
+        System.out.print("\n" + getBrand() + " " + getModel() +
+                ". Объем двигателя: " + getEngineVolume() +
+                ". Тип кузова - " +bodyType + ". \n");
+    }
     public BodyType getBodyType() {
         return bodyType;
     }
@@ -68,4 +74,5 @@ public class Car extends Transport implements Competing{
     public int maximumSpeed() {
         return (int) ( Math.random() * (200-150) ) + 150;
     }
-}
+
+    }

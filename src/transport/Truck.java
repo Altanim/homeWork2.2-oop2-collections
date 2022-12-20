@@ -7,7 +7,11 @@ public class Truck extends Transport implements Competing {
         super(brand, model, engineVolume);
         this.truckWeight = truckWeight;
     }
-
+    public void transportInfo() {
+        System.out.print("\n" + getBrand() + " " + getModel() +
+                ". Объем двигателя: " + getEngineVolume() +
+                ", грузоподъемность от " + truckWeight.getFrom() + " до " + truckWeight.getTo() + "т. \n" );
+    }
     public TruckWeight getTruckWeight() {
         return truckWeight;
     }

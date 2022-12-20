@@ -3,9 +3,7 @@ package transport;
 import transport.driver.Driver;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class Transport {
     private double engineVolume;
@@ -14,9 +12,9 @@ public abstract class Transport {
     public abstract void start();
     public abstract void stop();
     public abstract boolean service();
-    private List<Driver<?>> drivers = new ArrayList<>();
-    private List<Mechanic<?>> mechanics = new ArrayList<>();
-    private List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
     public void transportInfo() {
         System.out.print("\n" + getBrand() + " " + getModel() +
                 ". Объем двигателя: " + engineVolume +
@@ -77,16 +75,45 @@ public double notNull(double d){
         return model;
     }
 
-    public List<Driver<?>> getDrivers() {
+    public Set<Driver<?>> getDrivers() {
         return drivers;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transport)) return false;
+        Transport transport = (Transport) o;
+        return Double.compare(transport.getEngineVolume(),
+                getEngineVolume()) == 0 && Objects.equals(getBrand(),
+                transport.getBrand()) && Objects.equals(getModel(),
+                transport.getModel()) && Objects.equals(getDrivers(),
+                transport.getDrivers()) && Objects.equals(getMechanics(),
+                transport.getMechanics()) && Objects.equals(getSponsors(),
+                transport.getSponsors());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEngineVolume(), getBrand(), getModel(), getDrivers(), getMechanics(), getSponsors());
+    }
+
+    @Override
+    public String toString() {
+        return "\n Транспорт: " + brand +
+                " " + model +
+                " объем двигателя: " + engineVolume +
+                "\n водители: " + drivers +
+                "\n механики: " + mechanics +
+                "\n спонсоры: " + sponsors;
     }
 
     public abstract void repair();

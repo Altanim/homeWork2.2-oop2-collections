@@ -6,7 +6,11 @@ public class Bus extends Transport implements Competing {
         super(brand, model, engineVolume);
         this.busCapacity = busCapacity;
     }
-
+    public void transportInfo() {
+        System.out.print("\n" + getBrand() + " " + getModel() +
+                ". Объем двигателя: " + getEngineVolume() +
+                ". Вместимость от " + busCapacity.getFrom() + " пассажиров до " + busCapacity.getTo() + ".\n");
+    }
     public BusCapacity getBusCapacity() {
         return busCapacity;
     }
